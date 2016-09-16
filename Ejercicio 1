@@ -1,0 +1,109 @@
+/*
+ * Creado por SharpDevelop.
+ * Usuario: Jose
+ * Fecha: 06/09/2016
+ * Hora: 05:39 p.m.
+ * 
+ * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
+ */
+using System;
+namespace PilaEstatica
+{
+class Program
+{
+static void Main(string[] args)
+{
+Console.Title = (" Pilas");
+ConsoleKeyInfo x;
+Pilas Elementos = new Pilas();
+do
+{
+Console.Clear();
+Console.WriteLine("Pilas");
+if (Elementos.IsEmpty())
+{
+Console.WriteLine("La Pila está vacía");
+}
+else
+{
+Elementos.consulta();
+}
+
+Console.WriteLine("Si Desea Agregar Elementos a la Pila Presione [A] ");
+Console.WriteLine("Si Desea Sacar Elementos Presione [S] ");
+Console.WriteLine("[ESC]Salir");
+x = Console.ReadKey(true);
+
+switch (x.Key)
+{
+case ConsoleKey.A:
+if (!Elementos.IsFull())
+{
+Console.WriteLine("Ingrese Elementos: ");
+string NC = Console.ReadLine();
+
+Elementos.meter(NC);
+}
+break;
+case ConsoleKey.S:
+if (!Elementos.IsEmpty())
+Elementos.POP();
+break;
+}
+} while (x.Key != ConsoleKey.Escape);
+
+}
+
+}
+class Pilas
+{
+int cima;
+int max;
+string elemento;
+string[] arreglo;
+
+public Pilas()
+{
+cima = -1;
+max=4;
+arreglo = new string[max + 1];
+}
+public void meter(string valor)
+{
+cima = cima + 1;
+arreglo[cima] = valor;
+}
+public void POP()
+{
+elemento = arreglo[cima];
+cima = cima - 1;
+
+}
+public void consulta()
+{
+if (cima > -1)
+for (int i = cima; i >= 0; i--)
+Console.WriteLine(arreglo[i]);
+
+}
+public bool IsEmpty()
+{
+if (cima == -1)
+return true;
+else
+return false;
+}
+public bool IsFull()
+{
+if (cima == max)
+return true;
+else
+return false;
+}
+}
+
+
+
+}
+
+
