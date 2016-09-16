@@ -1,0 +1,69 @@
+
+/*
+ * Creado por SharpDevelop.
+ * Usuario: Jose
+ * Fecha: 16/09/2016
+ * Hora: 04:25 p.m.
+ * 
+ */
+using System;
+using System.Collections;
+using System.Text;
+ 
+namespace Pilas
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int opcion = 0;
+            string valor = "";
+            int numero = 0;
+            bool encontrado = false;
+ 
+            Stack miPila = new Stack();
+            do
+            {
+                Console.WriteLine("1- Push");
+                Console.WriteLine("2- Pop");
+                Console.WriteLine("3- Clear");
+                Console.WriteLine("4- Contains");
+                Console.WriteLine("5- Salir");
+                Console.WriteLine("Dame tu opcion");
+                valor = Console.ReadLine();
+                opcion = Convert.ToInt32(valor);
+                switch (opcion)
+                {
+                    case 1:
+                        Console.WriteLine("Dame el valor a introducir");
+                        valor = Console.ReadLine();
+                        numero = Convert.ToInt32(valor);
+                        miPila.Push(numero);
+                        break;
+                    case 2:
+                        numero = (int)miPila.Pop();
+                        Console.WriteLine("El valor obtenido es: {0}", numero);
+                        break;
+                    case 3:
+                        miPila.Clear();
+                        break;
+                    case 4:
+                        Console.WriteLine("Dame el valor a encontrar");
+                        valor = Console.ReadLine();
+                        numero = Convert.ToInt32(valor);
+                        encontrado = miPila.Contains(numero);
+                        Console.WriteLine("Encontrado - {0}", encontrado);
+                        break;
+                    default:
+                        Console.WriteLine("No existe opción intente de nuevo");
+                        break;
+                }
+                Console.WriteLine("La pila tiene {0} elementos", miPila.Count);
+                foreach (int n in miPila)
+                    Console.Write(" {0},", n);
+ 
+                Console.WriteLine("");
+            } while (opcion != 5);
+        }
+    }
+}
