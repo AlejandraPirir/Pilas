@@ -1,0 +1,65 @@
+/*
+ * Creado por SharpDevelop.
+ * Usuario: Jose
+ * Fecha: 14/09/2016
+ * Hora: 02:26 p.m.
+ * 
+ * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
+ */
+using System; 
+ 
+namespace Ejercicio_3 
+{ 
+    class Program 
+    { 
+        static void Main(string[] args) 
+        { 
+           
+                string Cadena = string.Empty; 
+                Cadena = Console.ReadLine(); 
+                VerificarParentesis(Cadena);         
+        } 
+ 
+        private static void VerificarParentesis(string Cadena) 
+        { 
+            int Parentesis = 0; 
+ 
+            for (int i = 0; i < Cadena.Length; i++) 
+            { 
+                switch (Cadena.Substring(i, 1)) 
+                { 
+                    case "(": 
+                        Parentesis++; 
+                        break; 
+                    case ")": 
+                        Parentesis--; 
+                        break; 
+                    default: 
+                        i = Cadena.Length; 
+                        Console.WriteLine("Cadena no Valida"); 
+                        Console.ReadLine(); 
+                        break; 
+                } 
+ 
+                if (Parentesis < 0) 
+                { 
+                    Console.WriteLine("Incorrecto"); 
+                    Console.ReadLine(); 
+                    break; 
+                } 
+            } 
+            if (Parentesis == 0) 
+            { 
+                Console.WriteLine("Correcto"); 
+                Console.ReadLine(); 
+            } 
+            else 
+            { 
+                Console.WriteLine("Incorrecto"); 
+                Console.ReadLine(); 
+            } 
+        } 
+    } 
+}
+
+
